@@ -39,6 +39,9 @@ gem "thruster", require: false
 # Use Vite in Rails and bring joy to your JavaScript experience
 gem "vite_rails", "~> 3.0"
 
+# The Rails adapter for Inertia.js [https://inertia-rails.dev]
+gem "inertia_rails", "~> 3.10"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

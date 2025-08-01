@@ -4,5 +4,19 @@
   "devDependencies": {
     "vite": "^7.0.6",
     "vite-plugin-ruby": "^5.1.1"
+  },
+  "dependencies": {
+    "@inertiajs/vue3": "^2.0.17",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.11",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "tailwindcss": "^4.1.11",
+    "typescript": "~5.6.2",
+    "vue": "^3.5.18",
+    "vue-tsc": "^3.0.4"
+  },
+  "scripts": {
+    "check": "vue-tsc -p tsconfig.app.json && tsc -p tsconfig.node.json"
   }
 }
