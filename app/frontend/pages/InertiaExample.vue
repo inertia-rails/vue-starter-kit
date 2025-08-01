@@ -34,12 +34,12 @@
 </template>
 
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3'
-import { ref } from 'vue'
+import { Head } from "@inertiajs/vue3"
+import { ref } from "vue"
 
-import inertiaSvg from '/assets/inertia.svg'
-import viteRubySvg from '/assets/vite_ruby.svg'
-import vueSvg from '/assets/vue.svg'
+import inertiaSvg from "/assets/inertia.svg"
+import viteRubySvg from "/assets/vite_ruby.svg"
+import vueSvg from "/assets/vue.svg"
 
 defineProps({
   name: String,

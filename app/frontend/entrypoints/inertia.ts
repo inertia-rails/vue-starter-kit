@@ -1,5 +1,6 @@
-import { createInertiaApp } from '@inertiajs/vue3'
-import { createApp, DefineComponent, h } from 'vue'
+import { createInertiaApp } from "@inertiajs/vue3"
+import type { DefineComponent } from "vue"
+import { createApp, h } from "vue"
 
 createInertiaApp({
   // Set default page title
@@ -13,7 +14,7 @@ createInertiaApp({
   // progress: false,
 
   resolve: (name) => {
-    const pages = import.meta.glob<DefineComponent>('../pages/**/*.vue', {
+    const pages = import.meta.glob<DefineComponent>("../pages/**/*.vue", {
       eager: true,
     })
     return pages[`../pages/${name}.vue`]
