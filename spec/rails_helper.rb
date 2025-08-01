@@ -12,7 +12,7 @@ require "selenium-webdriver"
 # Precompile Vite assets once before running the test suite
 ViteRuby.commands.build
 
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob("spec/support/**/*.rb").sort_by(&:to_s).each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -30,4 +30,6 @@ RSpec.configure do |config|
   end
 
   config.include FactoryBot::Syntax::Methods
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include AuthenticationHelpers, type: ->(type, _metadata) { [:system, :request, :controller].include?(type) }
 end

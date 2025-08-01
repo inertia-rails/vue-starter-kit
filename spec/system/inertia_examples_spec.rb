@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "InertiaExample", type: :system do
+  before { sign_in_as create(:user) }
+
   it "renders the text and increments the counter" do
     visit inertia_example_path(name: "TestUser")
 
