@@ -1,4 +1,6 @@
-class Identity::PasswordResetsController < ApplicationController
+# frozen_string_literal: true
+
+class Identity::PasswordResetsController < InertiaController
   skip_before_action :authenticate
 
   before_action :set_user, only: %i[ edit update ]
@@ -7,6 +9,7 @@ class Identity::PasswordResetsController < ApplicationController
   end
 
   def edit
+    render inertia: {email: @user.email, sid: params[:sid]}
   end
 
   def create
@@ -22,22 +25,23 @@ class Identity::PasswordResetsController < ApplicationController
     if @user.update(user_params)
       redirect_to sign_in_path, notice: "Your password was reset successfully. Please sign in"
     else
-      render :edit, status: :unprocessable_content
+      redirect_to edit_identity_password_reset_path(sid: params[:sid]), inertia: inertia_errors(@user)
     end
   end
 
   private
-    def set_user
-      @user = User.find_by_token_for!(:password_reset, params[:sid])
-    rescue StandardError
-      redirect_to new_identity_password_reset_path, alert: "That password reset link is invalid"
-    end
 
-    def user_params
-      params.permit(:password, :password_confirmation)
-    end
+  def set_user
+    @user = User.find_by_token_for!(:password_reset, params[:sid])
+  rescue StandardError
+    redirect_to new_identity_password_reset_path, alert: "That password reset link is invalid"
+  end
 
-    def send_password_reset_email
-      UserMailer.with(user: @user).password_reset.deliver_later
-    end
+  def user_params
+    params.permit(:password, :password_confirmation)
+  end
+
+  def send_password_reset_email
+    UserMailer.with(user: @user).password_reset.deliver_later
+  end
 end

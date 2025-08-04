@@ -21,6 +21,7 @@ export default defineConfigWithVueTs(
     ...importPlugin.flatConfigs.recommended,
     ...importPlugin.flatConfigs.typescript,
     rules: {
+      'vue/multi-word-component-names': 'off',
       "import/order": [
         "error",
         {
@@ -37,7 +38,7 @@ export default defineConfigWithVueTs(
         },
       ],
       "import/first": "error",
-      "import/extensions": ["error", "never", { "svg": "always", "png": "always", "jpg": "always", "jpeg": "always", "gif": "always", "webp": "always" }],
+      "import/extensions": ["error", "never", { "svg": "always", "png": "always", "jpg": "always", "webp": "always", "vue": "always", "css": "always" }],
       "@typescript-eslint/consistent-type-imports": "error",
     },
   },
