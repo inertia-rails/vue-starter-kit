@@ -5,7 +5,7 @@ import { createApp, h } from "vue"
 import { initializeTheme } from "@/composables/useAppearance"
 import PersistentLayout from "@/layouts/PersistentLayout.vue"
 
-const appName = import.meta.env.VITE_APP_NAME ?? "Rails"
+const appName = import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"
 
 createInertiaApp({
   // Set default page title

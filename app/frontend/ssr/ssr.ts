@@ -6,7 +6,7 @@ import { renderToString } from "vue/server-renderer"
 
 import PersistentLayout from "@/layouts/PersistentLayout.vue"
 
-const appName = import.meta.env.VITE_APP_NAME ?? "Rails"
+const appName = import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"
 
 createServer(
   (page) =>

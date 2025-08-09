@@ -12,6 +12,7 @@ A modern full-stack starter application with Rails backend and Vue.js frontend u
 
 See also:
 - [React Starter Kit](https://github.com/inertia-rails/react-starter-kit) for Inertia Rails with React
+- [Svelte Starter Kit](https://github.com/inertia-rails/svelte-starter-kit) for Inertia Rails with Svelte
 
 <a href="https://evilmartians.com/?utm_source=inertia-rails-vue-starter-kit&utm_campaign=project_page">
 <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Built by Evil Martians" width="236" height="54">

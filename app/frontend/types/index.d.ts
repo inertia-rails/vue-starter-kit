@@ -25,11 +25,8 @@ export interface Flash {
 export type AppPageProps<
   T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
-  name: string
-  quote: { message: string; author: string }
   auth: Auth
   flash: Flash
-  sidebarOpen: boolean
 }
 
 export interface User {

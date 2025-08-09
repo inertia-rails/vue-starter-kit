@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { Link, usePage } from "@inertiajs/vue3"
+import { Link } from "@inertiajs/vue3"
 
 import AppLogoIcon from "@/components/AppLogoIcon.vue"
 import { rootPath } from "@/routes"
-
-const page = usePage()
-const name = page.props.name
-const quote = page.props.quote
 
 defineProps<{
   title?: string
@@ -27,12 +23,16 @@ defineProps<{
         class="relative z-20 flex items-center text-lg font-medium"
       >
         <AppLogoIcon class="mr-2 size-8 fill-current text-white" />
-        {{ name }}
+        Vue Starter Kit
       </Link>
-      <div v-if="quote" class="relative z-20 mt-auto">
+      <div class="relative z-20 mt-auto">
         <blockquote class="space-y-2">
-          <p class="text-lg">&ldquo;{{ quote.message }}&rdquo;</p>
-          <footer class="text-sm text-neutral-300">{{ quote.author }}</footer>
+          <p class="text-lg">
+            &ldquo;The One Person Framework. A toolkit so powerful that it
+            allows a single individual to create modern applications upon which
+            they might build a competitive business.&rdquo;
+          </p>
+          <footer class="text-sm text-neutral-300">DHH</footer>
         </blockquote>
       </div>
     </div>

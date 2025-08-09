@@ -24,7 +24,7 @@ const form = useForm({
 })
 
 const submit = () => {
-  form.post(identityPasswordResetPath(), {
+  form.put(identityPasswordResetPath(), {
     onFinish: () => {
       form.reset("password", "password_confirmation")
     },
