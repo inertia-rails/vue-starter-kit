@@ -8,9 +8,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-import SidebarMenuButtonChild, {
-  type SidebarMenuButtonProps,
-} from "./SidebarMenuButtonChild.vue"
+import type { SidebarMenuButtonProps } from "./SidebarMenuButtonChild.vue"
+import SidebarMenuButtonChild from "./SidebarMenuButtonChild.vue"
 import { useSidebar } from "./utils"
 
 defineOptions({

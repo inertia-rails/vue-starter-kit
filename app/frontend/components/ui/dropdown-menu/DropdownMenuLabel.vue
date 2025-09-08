@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from "@vueuse/core"
-import {
-  DropdownMenuLabel,
-  type DropdownMenuLabelProps,
-  useForwardProps,
-} from "reka-ui"
+import type { DropdownMenuLabelProps } from "reka-ui"
+import { DropdownMenuLabel, useForwardProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 
 import { cn } from "@/lib/utils"

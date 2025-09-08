@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from "@vueuse/core"
-import {
-  NavigationMenuViewport,
-  type NavigationMenuViewportProps,
-  useForwardProps,
-} from "reka-ui"
+import type { NavigationMenuViewportProps } from "reka-ui"
+import { NavigationMenuViewport, useForwardProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 
 import { cn } from "@/lib/utils"
