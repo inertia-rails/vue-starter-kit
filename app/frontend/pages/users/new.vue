@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, useForm } from "@inertiajs/vue3"
+import { Form, Head } from "@inertiajs/vue3"
 import { LoaderCircle } from "lucide-vue-next"
 
 import InputError from "@/components/InputError.vue"
@@ -9,19 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AuthBase from "@/layouts/AuthLayout.vue"
 import { signInPath, signUpPath } from "@/routes"
-
-const form = useForm({
-  name: "",
-  email: "",
-  password: "",
-  password_confirmation: "",
-})
-
-const submit = () => {
-  form.post(signUpPath(), {
-    onFinish: () => form.reset("password", "password_confirmation"),
-  })
-}
 </script>
 
 <template>
@@ -31,72 +18,79 @@ const submit = () => {
   >
     <Head title="Register" />
 
-    <form @submit.prevent="submit" class="flex flex-col gap-6">
+    <Form
+      method="post"
+      :action="signUpPath()"
+      :resetOnSuccess="['password', 'password_confirmation']"
+      disableWhileProcessing
+      class="flex flex-col gap-6"
+      #default="{ errors, processing }"
+    >
       <div class="grid gap-6">
         <div class="grid gap-2">
           <Label for="name">Name</Label>
           <Input
             id="name"
+            name="name"
             type="text"
             required
             autofocus
             :tabindex="1"
             autocomplete="name"
-            v-model="form.name"
             placeholder="Full name"
           />
-          <InputError :message="form.errors.name" />
+          <InputError :message="errors.name" />
         </div>
 
         <div class="grid gap-2">
           <Label for="email">Email address</Label>
           <Input
             id="email"
+            name="email"
             type="email"
             required
             :tabindex="2"
             autocomplete="email"
-            v-model="form.email"
             placeholder="email@example.com"
           />
-          <InputError :message="form.errors.email" />
+          <InputError :message="errors.email" />
         </div>
 
         <div class="grid gap-2">
           <Label for="password">Password</Label>
           <Input
             id="password"
+            name="password"
             type="password"
             required
             :tabindex="3"
             autocomplete="new-password"
-            v-model="form.password"
             placeholder="Password"
           />
-          <InputError :message="form.errors.password" />
+          <InputError :message="errors.password" />
         </div>
 
         <div class="grid gap-2">
           <Label for="password_confirmation">Confirm password</Label>
           <Input
             id="password_confirmation"
+            name="password_confirmation"
             type="password"
             required
             :tabindex="4"
             autocomplete="new-password"
-            v-model="form.password_confirmation"
             placeholder="Confirm password"
           />
-          <InputError :message="form.errors.password_confirmation" />
+          <InputError :message="errors.password_confirmation" />
         </div>
 
         <Button
           type="submit"
           class="mt-2 w-full"
-          tabindex="5"
-          :disabled="form.processing"
+          :tabindex="5"
+          :disabled="processing"
         >
-          <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
+          <LoaderCircle v-if="processing" class="h-4 w-4 animate-spin" />
           Create account
         </Button>
       </div>
@@ -110,6 +104,6 @@ const submit = () => {
           >Log in</TextLink
         >
       </div>
-    </form>
+    </Form>
   </AuthBase>
 </template>

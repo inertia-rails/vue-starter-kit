@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, useForm, usePage } from "@inertiajs/vue3"
+import { Form, Head, usePage } from "@inertiajs/vue3"
 
 import DeleteUser from "@/components/DeleteUser.vue"
 import HeadingSmall from "@/components/HeadingSmall.vue"
@@ -21,16 +21,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const page = usePage()
 const user = page.props.auth.user as User
-
-const form = useForm({
-  name: user.name,
-})
-
-const submit = () => {
-  form.patch(settingsProfilePath(), {
-    preserveScroll: true,
-  })
-}
 </script>
 
 <template>
@@ -44,22 +34,29 @@ const submit = () => {
           description="Update your name and email address"
         />
 
-        <form @submit.prevent="submit" class="space-y-6">
+        <Form
+          method="patch"
+          :action="settingsProfilePath()"
+          :options="{ preserveScroll: true }"
+          class="space-y-6"
+          #default="{ errors, processing, recentlySuccessful }"
+        >
           <div class="grid gap-2">
             <Label for="name">Name</Label>
             <Input
               id="name"
+              name="name"
+              :defaultValue="user.name"
               class="mt-1 block w-full"
-              v-model="form.name"
               required
               autocomplete="name"
               placeholder="Full name"
             />
-            <InputError class="mt-2" :message="form.errors.name" />
+            <InputError class="mt-2" :message="errors.name" />
           </div>
 
           <div class="flex items-center gap-4">
-            <Button :disabled="form.processing">Save</Button>
+            <Button :disabled="processing">Save</Button>
 
             <Transition
               enter-active-class="transition ease-in-out"
@@ -67,15 +64,12 @@ const submit = () => {
               leave-active-class="transition ease-in-out"
               leave-to-class="opacity-0"
             >
-              <p
-                v-show="form.recentlySuccessful"
-                class="text-sm text-neutral-600"
-              >
+              <p v-show="recentlySuccessful" class="text-sm text-neutral-600">
                 Saved.
               </p>
             </Transition>
           </div>
-        </form>
+        </Form>
       </div>
 
       <DeleteUser />
