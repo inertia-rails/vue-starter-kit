@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { Errors } from "@inertiajs/core"
-import { Head, Link, useForm, usePage } from "@inertiajs/vue3"
-import { ref } from "vue"
+import { Form, Head, Link, usePage } from "@inertiajs/vue3"
 
 import HeadingSmall from "@/components/HeadingSmall.vue"
 import InputError from "@/components/InputError.vue"
@@ -20,30 +18,8 @@ const breadcrumbs: BreadcrumbItem[] = [
   },
 ]
 
-const currentPasswordInput = ref<HTMLInputElement | null>(null)
-
 const page = usePage()
 const user = page.props.auth.user as User
-
-const form = useForm({
-  password_challenge: "",
-  email: user.email,
-})
-
-const submit = () => {
-  form.patch(settingsEmailPath(), {
-    preserveScroll: true,
-    onSuccess: () => form.reset("password_challenge"),
-    onError: (errors: Errors) => {
-      if (errors.password_challenge) {
-        form.reset("password_challenge")
-        if (currentPasswordInput.value instanceof HTMLInputElement) {
-          currentPasswordInput.value.focus()
-        }
-      }
-    },
-  })
-}
 </script>
 
 <template>
@@ -57,21 +33,30 @@ const submit = () => {
           description="Update your email address and verify it"
         />
 
-        <form @submit.prevent="submit" class="space-y-6">
+        <Form
+          method="patch"
+          :action="settingsEmailPath()"
+          :options="{ preserveScroll: true }"
+          :resetOnError="['password_challenge']"
+          :resetOnSuccess="['password_challenge']"
+          class="space-y-6"
+          #default="{ errors, processing, recentlySuccessful }"
+        >
           <div class="grid gap-2">
             <Label for="email">Email address</Label>
 
             <Input
               id="email"
+              name="email"
               type="email"
               class="mt-1 block w-full"
-              v-model="form.email"
+              :defaultValue="user.email"
               required
               autocomplete="username"
               placeholder="Email address"
             />
 
-            <InputError class="mt-2" :message="form.errors.email" />
+            <InputError class="mt-2" :message="errors.email" />
           </div>
 
           <div v-if="!user.verified">
@@ -93,19 +78,19 @@ const submit = () => {
 
             <Input
               id="password_challenge"
+              name="password_challenge"
               ref="currentPasswordInput"
-              v-model="form.password_challenge"
               type="password"
               class="mt-1 block w-full"
               autocomplete="current-password"
               placeholder="Current password"
             />
 
-            <InputError :message="form.errors.password_challenge" />
+            <InputError :message="errors.password_challenge" />
           </div>
 
           <div class="flex items-center gap-4">
-            <Button :disabled="form.processing">Save</Button>
+            <Button :disabled="processing">Save</Button>
 
             <Transition
               enter-active-class="transition ease-in-out"
@@ -113,15 +98,12 @@ const submit = () => {
               leave-active-class="transition ease-in-out"
               leave-to-class="opacity-0"
             >
-              <p
-                v-show="form.recentlySuccessful"
-                class="text-sm text-neutral-600"
-              >
+              <p v-show="recentlySuccessful" class="text-sm text-neutral-600">
                 Saved
               </p>
             </Transition>
           </div>
-        </form>
+        </Form>
       </div>
     </SettingsLayout>
   </AppLayout>

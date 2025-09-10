@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, useForm } from "@inertiajs/vue3"
+import { Form, Head } from "@inertiajs/vue3"
 import { LoaderCircle } from "lucide-vue-next"
 
 import InputError from "@/components/InputError.vue"
@@ -9,18 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AuthBase from "@/layouts/AuthLayout.vue"
 import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
-
-const form = useForm({
-  email: "",
-  password: "",
-  remember: false,
-})
-
-const submit = () => {
-  form.post(signInPath(), {
-    onFinish: () => form.reset("password"),
-  })
-}
 </script>
 
 <template>
@@ -30,21 +18,27 @@ const submit = () => {
   >
     <Head title="Log in" />
 
-    <form @submit.prevent="submit" class="flex flex-col gap-6">
+    <Form
+      method="post"
+      :action="signInPath()"
+      :resetOnSuccess="['password']"
+      class="flex flex-col gap-6"
+      #default="{ errors, processing }"
+    >
       <div class="grid gap-6">
         <div class="grid gap-2">
           <Label for="email">Email address</Label>
           <Input
             id="email"
+            name="email"
             type="email"
             required
             autofocus
             :tabindex="1"
             autocomplete="email"
-            v-model="form.email"
             placeholder="email@example.com"
           />
-          <InputError :message="form.errors.email" />
+          <InputError :message="errors.email" />
         </div>
 
         <div class="grid gap-2">
@@ -60,23 +54,23 @@ const submit = () => {
           </div>
           <Input
             id="password"
+            name="password"
             type="password"
             required
             :tabindex="2"
             autocomplete="current-password"
-            v-model="form.password"
             placeholder="Password"
           />
-          <InputError :message="form.errors.password" />
+          <InputError :message="errors.password" />
         </div>
 
         <Button
           type="submit"
           class="mt-4 w-full"
           :tabindex="4"
-          :disabled="form.processing"
+          :disabled="processing"
         >
-          <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
+          <LoaderCircle v-if="processing" class="h-4 w-4 animate-spin" />
           Log in
         </Button>
       </div>
@@ -85,6 +79,6 @@ const submit = () => {
         Don't have an account?
         <TextLink :href="signUpPath()" :tabindex="5">Sign up</TextLink>
       </div>
-    </form>
+    </Form>
   </AuthBase>
 </template>

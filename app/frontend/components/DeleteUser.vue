@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForm } from "@inertiajs/vue3"
+import { Form } from "@inertiajs/vue3"
 import { ref } from "vue"
 
 import HeadingSmall from "@/components/HeadingSmall.vue"
@@ -20,26 +20,6 @@ import { Label } from "@/components/ui/label"
 import { usersPath } from "@/routes"
 
 const passwordInput = ref<HTMLInputElement | null>(null)
-
-const form = useForm({
-  password_challenge: "",
-})
-
-const deleteUser = (e: Event) => {
-  e.preventDefault()
-
-  form.delete(usersPath(), {
-    preserveScroll: true,
-    onSuccess: () => closeModal(),
-    onError: () => passwordInput.value?.focus(),
-    onFinish: () => form.reset(),
-  })
-}
-
-const closeModal = () => {
-  form.clearErrors()
-  form.reset()
-}
 </script>
 
 <template>
@@ -62,7 +42,15 @@ const closeModal = () => {
           <Button variant="destructive">Delete account</Button>
         </DialogTrigger>
         <DialogContent>
-          <form class="space-y-6" @submit="deleteUser">
+          <Form
+            method="delete"
+            :action="usersPath()"
+            :options="{ preserveScroll: true }"
+            :onError="() => passwordInput?.focus()"
+            resetOnSuccess
+            className="space-y-6"
+            #default="{ resetAndClearErrors, processing, errors }"
+          >
             <DialogHeader class="space-y-3">
               <DialogTitle
                 >Are you sure you want to delete your account?</DialogTitle
@@ -81,15 +69,14 @@ const closeModal = () => {
                 type="password"
                 name="password_challenge"
                 ref="passwordInput"
-                v-model="form.password_challenge"
                 placeholder="Password"
               />
-              <InputError :message="form.errors.password_challenge" />
+              <InputError :message="errors.password_challenge" />
             </div>
 
             <DialogFooter class="gap-2">
               <DialogClose as-child>
-                <Button variant="secondary" @click="closeModal">
+                <Button variant="secondary" @click="resetAndClearErrors">
                   Cancel
                 </Button>
               </DialogClose>
@@ -97,12 +84,12 @@ const closeModal = () => {
               <Button
                 type="submit"
                 variant="destructive"
-                :disabled="form.processing"
+                :disabled="processing"
               >
                 Delete account
               </Button>
             </DialogFooter>
-          </form>
+          </Form>
         </DialogContent>
       </Dialog>
     </div>
