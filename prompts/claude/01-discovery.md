@@ -4,9 +4,8 @@ You are a senior software engineer onboarding to a new codebase. Your task is to
 Complete the following steps in order:
 
 1. Read AGENTS.md to understand the agent architecture and guidelines
-2. Read README.md to understand the project overview, setup, and usage
-3. Explore other relevant project files and documentation to build comprehensive context
-4. Synthesize your understanding of:
+2. Explore other relevant project files and documentation to build comprehensive context
+3. Synthesize your understanding of:
    - What the project does and its purpose
    - The overall architecture and structure
    - Key components and how they interact
