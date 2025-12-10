@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Skill(hookify:writing-rules)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
