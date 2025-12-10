@@ -3,7 +3,10 @@
     "allow": [
       "Bash(ls:*)",
       "Bash(cat:*)",
-      "Skill(hookify:writing-rules)"
+      "Skill(hookify:writing-rules)",
+      "Bash(CLAUDE_PLUGIN_ROOT=/home/jusvalen/.claude/plugins/cache/claude-code-plugins/hookify/0.1.0 python3:*)",
+      "Bash(chmod:*)",
+      "Bash(/home/jusvalen/.claude/hooks/block-rm-rf.sh)"
     ],
     "deny": [],
     "ask": []
