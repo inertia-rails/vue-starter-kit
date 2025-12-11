@@ -7,78 +7,165 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIT STAY — Heritage Workwear Theme
+
+   Color Philosophy:
+   • Barn Red (Primary): Warm, earthy red — CTAs, brand moments, key actions
+   • Denim Blue (Secondary): Soft indigo — navigation, links, supporting UI
+   • Canvas Cream: Warm off-white backgrounds — never stark white
+   • Wheat Gold (Accent): Warm highlights for success states, badges
+
+   Typography: Bitter (headings) + Source Serif 4 (body)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.54 0.22 29.15);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* ─── Core Brand Colors ─────────────────────────────────────────────────── */
+  --barn-red: oklch(0.52 0.16 28);
+  --barn-red-light: oklch(0.62 0.14 28);
+  --barn-red-dark: oklch(0.42 0.18 28);
+
+  --denim-blue: oklch(0.48 0.10 250);
+  --denim-blue-light: oklch(0.58 0.08 250);
+  --denim-blue-dark: oklch(0.38 0.12 250);
+
+  --canvas-cream: oklch(0.985 0.008 85);
+  --canvas-warm: oklch(0.96 0.012 85);
+
+  --wheat-gold: oklch(0.72 0.12 85);
+  --wheat-gold-muted: oklch(0.82 0.08 85);
+
+  /* ─── Light Mode: Canvas Cream Base ─────────────────────────────────────── */
+  --background: oklch(0.985 0.008 85);
+  --foreground: oklch(0.22 0.02 250);
+
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.22 0.02 250);
+
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.22 0.02 250);
+
+  /* Primary: Barn Red — leads the brand */
+  --primary: oklch(0.52 0.16 28);
+  --primary-foreground: oklch(0.98 0.01 85);
+
+  /* Secondary: Denim Blue — supports navigation */
+  --secondary: oklch(0.48 0.10 250);
+  --secondary-foreground: oklch(0.98 0.01 85);
+
+  --muted: oklch(0.94 0.01 85);
+  --muted-foreground: oklch(0.45 0.03 250);
+
+  /* Accent: Wheat Gold — warm highlights */
+  --accent: oklch(0.72 0.12 85);
+  --accent-foreground: oklch(0.25 0.02 85);
+
+  --destructive: oklch(0.55 0.20 25);
+  --destructive-foreground: oklch(0.98 0.01 85);
+
+  --border: oklch(0.88 0.015 85);
+  --input: oklch(0.92 0.01 85);
+  --ring: oklch(0.52 0.16 28);
+
+  /* ─── Chart Colors: Heritage Palette ────────────────────────────────────── */
+  --chart-1: oklch(0.52 0.16 28);   /* Barn Red */
+  --chart-2: oklch(0.48 0.10 250);  /* Denim Blue */
+  --chart-3: oklch(0.72 0.12 85);   /* Wheat Gold */
+  --chart-4: oklch(0.55 0.08 160);  /* Forest Sage */
+  --chart-5: oklch(0.62 0.14 28);   /* Light Barn Red */
+
+  --radius: 0.5rem;
+
+  /* ─── Sidebar: Denim Blue Theme ─────────────────────────────────────────── */
+  --sidebar: oklch(0.25 0.04 250);
+  --sidebar-foreground: oklch(0.92 0.01 85);
+  --sidebar-primary: oklch(0.62 0.14 28);
+  --sidebar-primary-foreground: oklch(0.98 0.01 85);
+  --sidebar-accent: oklch(0.32 0.05 250);
+  --sidebar-accent-foreground: oklch(0.92 0.01 85);
+  --sidebar-border: oklch(0.35 0.04 250);
+  --sidebar-ring: oklch(0.52 0.16 28);
+
+  /* ─── Extended Semantic Colors ──────────────────────────────────────────── */
+  --success: oklch(0.55 0.12 145);
+  --success-foreground: oklch(0.98 0.01 85);
+  --warning: oklch(0.72 0.14 70);
+  --warning-foreground: oklch(0.25 0.02 85);
+  --info: oklch(0.55 0.10 250);
+  --info-foreground: oklch(0.98 0.01 85);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.54 0.22 29.15);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* ─── Dark Mode: Deep Indigo Base ───────────────────────────────────────── */
+  --background: oklch(0.16 0.02 250);
+  --foreground: oklch(0.92 0.01 85);
+
+  --card: oklch(0.20 0.025 250);
+  --card-foreground: oklch(0.92 0.01 85);
+
+  --popover: oklch(0.20 0.025 250);
+  --popover-foreground: oklch(0.92 0.01 85);
+
+  /* Primary: Lighter Barn Red for dark backgrounds */
+  --primary: oklch(0.62 0.16 28);
+  --primary-foreground: oklch(0.16 0.02 250);
+
+  /* Secondary: Lighter Denim Blue */
+  --secondary: oklch(0.58 0.10 250);
+  --secondary-foreground: oklch(0.16 0.02 250);
+
+  --muted: oklch(0.26 0.02 250);
+  --muted-foreground: oklch(0.65 0.02 85);
+
+  /* Accent: Muted Wheat Gold */
+  --accent: oklch(0.68 0.10 85);
+  --accent-foreground: oklch(0.18 0.02 250);
+
+  --destructive: oklch(0.60 0.20 25);
+  --destructive-foreground: oklch(0.16 0.02 250);
+
+  --border: oklch(0.30 0.025 250);
+  --input: oklch(0.26 0.02 250);
+  --ring: oklch(0.62 0.16 28);
+
+  /* ─── Chart Colors: Dark Mode Adjusted ──────────────────────────────────── */
+  --chart-1: oklch(0.62 0.16 28);
+  --chart-2: oklch(0.58 0.10 250);
+  --chart-3: oklch(0.72 0.12 85);
+  --chart-4: oklch(0.60 0.10 160);
+  --chart-5: oklch(0.70 0.14 28);
+
+  /* ─── Sidebar: Deeper Indigo ────────────────────────────────────────────── */
+  --sidebar: oklch(0.12 0.025 250);
+  --sidebar-foreground: oklch(0.88 0.01 85);
+  --sidebar-primary: oklch(0.62 0.16 28);
+  --sidebar-primary-foreground: oklch(0.16 0.02 250);
+  --sidebar-accent: oklch(0.22 0.03 250);
+  --sidebar-accent-foreground: oklch(0.88 0.01 85);
+  --sidebar-border: oklch(0.25 0.025 250);
+  --sidebar-ring: oklch(0.62 0.16 28);
+
+  /* ─── Extended Semantic Colors (Dark) ───────────────────────────────────── */
+  --success: oklch(0.60 0.14 145);
+  --success-foreground: oklch(0.16 0.02 250);
+  --warning: oklch(0.75 0.14 70);
+  --warning-foreground: oklch(0.18 0.02 85);
+  --info: oklch(0.60 0.10 250);
+  --info-foreground: oklch(0.16 0.02 250);
 }
 
 @theme inline {
+  /* ─── Typography: Heritage Workwear ─────────────────────────────────────── */
+  --font-heading: "Bitter", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Font family utilities: font-heading, font-body, font-mono */
+  --font-family-heading: var(--font-heading);
+  --font-family-body: var(--font-body);
+  --font-family-mono: var(--font-mono);
+
+  /* ─── Semantic Colors ───────────────────────────────────────────────────── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -98,15 +185,41 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  /* ─── Brand Colors (direct access) ──────────────────────────────────────── */
+  --color-barn-red: var(--barn-red);
+  --color-barn-red-light: var(--barn-red-light);
+  --color-barn-red-dark: var(--barn-red-dark);
+  --color-denim-blue: var(--denim-blue);
+  --color-denim-blue-light: var(--denim-blue-light);
+  --color-denim-blue-dark: var(--denim-blue-dark);
+  --color-canvas-cream: var(--canvas-cream);
+  --color-canvas-warm: var(--canvas-warm);
+  --color-wheat-gold: var(--wheat-gold);
+  --color-wheat-gold-muted: var(--wheat-gold-muted);
+
+  /* ─── Extended Semantic Colors ──────────────────────────────────────────── */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  /* ─── Chart Colors ──────────────────────────────────────────────────────── */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  /* ─── Radius ────────────────────────────────────────────────────────────── */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* ─── Sidebar ───────────────────────────────────────────────────────────── */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -115,6 +228,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ─── Animations ────────────────────────────────────────────────────────── */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
@@ -140,7 +255,29 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply antialiased bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  /* ─── Typography Hierarchy ──────────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Utility Classes for Brand Colors
+
+   Usage examples:
+   - bg-barn-red, text-barn-red, border-barn-red
+   - bg-denim-blue, text-denim-blue, border-denim-blue
+   - bg-canvas-cream, bg-canvas-warm
+   - bg-wheat-gold, text-wheat-gold
+   ═══════════════════════════════════════════════════════════════════════════ */
