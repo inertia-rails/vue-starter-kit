@@ -22,9 +22,7 @@ export interface Flash {
   notice?: string
 }
 
-export type AppPageProps<
-  T extends Record<string, unknown> = Record<string, unknown>,
-> = T & {
+export interface SharedData {
   auth: Auth
   flash: Flash
 }

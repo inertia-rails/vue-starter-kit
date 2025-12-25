@@ -56,7 +56,7 @@ const user = page.props.auth.user as User
               placeholder="Email address"
             />
 
-            <InputError class="mt-2" :message="errors.email" />
+            <InputError class="mt-2" :messages="errors.email" />
           </div>
 
           <div v-if="!user.verified">
@@ -86,7 +86,7 @@ const user = page.props.auth.user as User
               placeholder="Current password"
             />
 
-            <InputError :message="errors.password_challenge" />
+            <InputError :messages="errors.password_challenge" />
           </div>
 
           <div class="flex items-center gap-4">
