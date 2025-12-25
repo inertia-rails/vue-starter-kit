@@ -2,7 +2,6 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",
     "eslint": "^9.32.0",
@@ -38,9 +37,9 @@
   },
   "scripts": {
     "check": "vue-tsc -p tsconfig.app.json && tsc -p tsconfig.node.json",
-    "lint": "eslint app/frontend --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint '*.{js,mjs,cjs,ts}' app/frontend --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier --check 'app/frontend/**/*.{ts,tsx,js,vue}'",
+    "format": "prettier --check 'app/frontend' '*.{js,mjs,cjs,ts}'",
     "format:fix": "npm run format -- --write"
   }
 }
