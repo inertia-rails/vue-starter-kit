@@ -23,7 +23,7 @@ defineProps<{
         class="relative z-20 flex items-center text-lg font-medium"
       >
         <AppLogoIcon class="mr-2 size-8 fill-current text-white" />
-        Vue Starter Kit
+        {import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"}
       </Link>
       <div class="relative z-20 mt-auto">
         <blockquote class="space-y-2">
