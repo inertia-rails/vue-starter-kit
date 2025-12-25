@@ -38,7 +38,7 @@ import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
             autocomplete="email"
             placeholder="email@example.com"
           />
-          <InputError :message="errors.email" />
+          <InputError :messages="errors.email" />
         </div>
 
         <div class="grid gap-2">
@@ -61,7 +61,7 @@ import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
             autocomplete="current-password"
             placeholder="Password"
           />
-          <InputError :message="errors.password" />
+          <InputError :messages="errors.password" />
         </div>
 
         <Button

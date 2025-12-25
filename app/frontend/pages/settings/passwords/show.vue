@@ -49,7 +49,7 @@ const breadcrumbs: BreadcrumbItem[] = [
               autocomplete="current-password"
               placeholder="Current password"
             />
-            <InputError :message="errors.password_challenge" />
+            <InputError :messages="errors.password_challenge" />
           </div>
 
           <div class="grid gap-2">
@@ -62,7 +62,7 @@ const breadcrumbs: BreadcrumbItem[] = [
               autocomplete="new-password"
               placeholder="New password"
             />
-            <InputError :message="errors.password" />
+            <InputError :messages="errors.password" />
           </div>
 
           <div class="grid gap-2">
@@ -75,7 +75,7 @@ const breadcrumbs: BreadcrumbItem[] = [
               autocomplete="new-password"
               placeholder="Confirm password"
             />
-            <InputError :message="errors.password_confirmation" />
+            <InputError :messages="errors.password_confirmation" />
           </div>
 
           <div class="flex items-center gap-4">

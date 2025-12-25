@@ -71,7 +71,7 @@ const passwordInput = ref<HTMLInputElement | null>(null)
                 ref="passwordInput"
                 placeholder="Password"
               />
-              <InputError :message="errors.password_challenge" />
+              <InputError :messages="errors.password_challenge" />
             </div>
 
             <DialogFooter class="gap-2">

@@ -23,6 +23,7 @@ export default defineConfigWithVueTs(
   {
     ...importPlugin.flatConfigs.recommended,
     ...importPlugin.flatConfigs.typescript,
+    settings: { "import/resolver": { typescript: {} } },
     rules: {
       "vue/multi-word-component-names": "off",
       "import/order": [
@@ -43,14 +44,13 @@ export default defineConfigWithVueTs(
       "import/first": "error",
       "import/extensions": [
         "error",
-        "never",
+        "always",
         {
-          svg: "always",
-          png: "always",
-          jpg: "always",
-          webp: "always",
-          vue: "always",
-          css: "always",
+          js: "never",
+          jsx: "never",
+          ts: "never",
+          tsx: "never",
+          mts: "never",
         },
       ],
       "@typescript-eslint/consistent-type-imports": "error",

@@ -1,4 +1,4 @@
-import type { AppPageProps } from "@/types/index"
+import type { SharedData } from "@/types"
 
 // Extend ImportMeta interface for Vite...
 declare module "vite/client" {
@@ -14,7 +14,10 @@ declare module "vite/client" {
 }
 
 declare module "@inertiajs/core" {
-  interface PageProps extends InertiaPageProps, AppPageProps {}
+  export interface InertiaConfig {
+    sharedPageProps: SharedData
+    errorValueType: string[]
+  }
 }
 
 declare module "vue" {
