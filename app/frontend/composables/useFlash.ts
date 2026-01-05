@@ -1,37 +1,25 @@
-import { router, usePage } from "@inertiajs/vue3"
-import { ref, watch } from "vue"
+import { router } from "@inertiajs/vue3"
+import { onMounted, onUnmounted } from "vue"
 import { toast } from "vue-sonner"
 
-import type { Flash } from "@/types"
+export function useFlash() {
+  let removeListener: (() => void) | undefined
 
-const emptyFlash = {}
-
-export const useFlash = () => {
-  const page = usePage()
-  const currentFlash = ref<Flash>(emptyFlash)
-
-  router.on("start", () => {
-    currentFlash.value = emptyFlash
-  })
-
-  watch(
-    () => page.props.flash,
-    (newFlash) => {
-      currentFlash.value = newFlash
-    },
-    { immediate: true },
-  )
-
-  watch(
-    currentFlash,
-    (flash) => {
+  onMounted(() => {
+    removeListener = router.on("flash", (event) => {
+      const flash = event.detail.flash
       if (flash.alert) {
         toast.error(flash.alert)
       }
       if (flash.notice) {
         toast(flash.notice)
       }
-    },
-    { deep: true },
-  )
+    })
+  })
+
+  onUnmounted(() => {
+    if (removeListener) {
+      removeListener()
+    }
+  })
 }

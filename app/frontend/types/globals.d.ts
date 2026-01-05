@@ -1,4 +1,4 @@
-import type { SharedData } from "@/types"
+import type { FlashData, SharedData } from "@/types"
 
 // Extend ImportMeta interface for Vite...
 declare module "vite/client" {
@@ -16,6 +16,7 @@ declare module "vite/client" {
 declare module "@inertiajs/core" {
   export interface InertiaConfig {
     sharedPageProps: SharedData
+    flashDataType: FlashData
     errorValueType: string[]
   }
 }
