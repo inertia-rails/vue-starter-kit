@@ -8,6 +8,8 @@ defineProps<{
   title?: string
   description?: string
 }>()
+
+const appName = import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"
 </script>
 
 <template>
@@ -23,7 +25,7 @@ defineProps<{
         class="relative z-20 flex items-center text-lg font-medium"
       >
         <AppLogoIcon class="mr-2 size-8 fill-current text-white" />
-        {import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"}
+        {{ appName }}
       </Link>
       <div class="relative z-20 mt-auto">
         <blockquote class="space-y-2">
