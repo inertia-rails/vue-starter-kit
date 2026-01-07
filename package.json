@@ -18,7 +18,7 @@
     "vite-plugin-vue-devtools": "^8.0.0"
   },
   "dependencies": {
-    "@inertiajs/vue3": "^2.0.17",
+    "@inertiajs/vue3": "^2.3.7",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
