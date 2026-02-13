@@ -36,6 +36,7 @@ createServer(
       defaults: {
         form: {
           forceIndicesArrayFormatInFormData: false,
+          withAllErrors: true,
         },
         future: {
           useScriptElementForInitialPage: true,
