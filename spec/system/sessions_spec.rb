@@ -3,8 +3,9 @@
 require "rails_helper"
 
 RSpec.describe "Sessions", type: :system do
+  fixtures :users
   it "signs in and shows the dashboard" do
-    user = create(:user)
+    user = users(:one)
 
     visit sign_in_path
 
