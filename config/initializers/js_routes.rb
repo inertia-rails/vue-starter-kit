@@ -24,7 +24,7 @@ JsRoutes.setup do |c|
   # for apps that work on multiple domains.
   # c.url_links = true
 
-  c.file = "../frontend/routes/index.js"
+  c.file = "../javascript/routes/index.js"
 
   # More options:
   # @see https://github.com/railsware/js-routes#available-options

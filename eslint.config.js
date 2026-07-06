@@ -14,9 +14,9 @@ import pluginVue from "eslint-plugin-vue"
 export default defineConfigWithVueTs(
   {
     name: "app/files-to-lint",
-    files: ["app/frontend/**/*.{ts,mts,tsx,vue}"],
+    files: ["app/javascript/**/*.{ts,mts,tsx,vue}"],
   },
-  { ignores: ["app/frontend/routes/*"] },
+  { ignores: ["app/javascript/routes/*"] },
 
   pluginVue.configs["flat/essential"],
   vueTsConfigs.recommended,
