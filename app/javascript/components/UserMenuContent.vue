@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
-import { sessionPath, settingsProfilePath } from "@/routes"
+import { sessions, settingsProfiles } from "@/routes"
 import type { User } from "@/types"
 
 interface Props {
@@ -39,7 +39,7 @@ defineProps<Props>()
     <DropdownMenuItem :as-child="true">
       <Link
         class="block w-full"
-        :href="settingsProfilePath()"
+        :href="settingsProfiles.show()"
         prefetch
         as="button"
       >
@@ -52,8 +52,7 @@ defineProps<Props>()
   <DropdownMenuItem :as-child="true">
     <Link
       class="block w-full"
-      method="delete"
-      :href="sessionPath({ id: auth.session.id })"
+      :href="sessions.destroy(auth.session.id)"
       @click="handleLogout"
       as="button"
     >

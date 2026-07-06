@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AuthBase from "@/layouts/AuthLayout.vue"
-import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
+import { identityPasswordResets, sessions, users } from "@/routes"
 </script>
 
 <template>
@@ -19,8 +19,7 @@ import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
     <Head title="Log in" />
 
     <Form
-      method="post"
-      :action="signInPath()"
+      :action="sessions.create()"
       :resetOnSuccess="['password']"
       class="flex flex-col gap-6"
       #default="{ errors, processing }"
@@ -45,7 +44,7 @@ import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
           <div class="flex items-center justify-between">
             <Label for="password">Password</Label>
             <TextLink
-              :href="newIdentityPasswordResetPath()"
+              :href="identityPasswordResets.new()"
               class="text-sm"
               :tabindex="5"
             >
@@ -77,7 +76,7 @@ import { newIdentityPasswordResetPath, signInPath, signUpPath } from "@/routes"
 
       <div class="text-muted-foreground text-center text-sm">
         Don't have an account?
-        <TextLink :href="signUpPath()" :tabindex="5">Sign up</TextLink>
+        <TextLink :href="users.new()" :tabindex="5">Sign up</TextLink>
       </div>
     </Form>
   </AuthBase>

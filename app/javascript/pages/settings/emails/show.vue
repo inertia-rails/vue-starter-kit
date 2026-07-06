@@ -8,13 +8,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AppLayout from "@/layouts/AppLayout.vue"
 import SettingsLayout from "@/layouts/settings/Layout.vue"
-import { identityEmailVerificationPath, settingsEmailPath } from "@/routes"
+import { identityEmailVerifications, settingsEmails } from "@/routes"
 import type { BreadcrumbItem, User } from "@/types"
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: "Email settings",
-    href: settingsEmailPath(),
+    href: settingsEmails.show().url,
   },
 ]
 
@@ -34,8 +34,7 @@ const user = page.props.auth.user as User
         />
 
         <Form
-          method="patch"
-          :action="settingsEmailPath()"
+          :action="settingsEmails.update()"
           :options="{ preserveScroll: true }"
           :resetOnError="['password_challenge']"
           :resetOnSuccess="['password_challenge']"
@@ -63,8 +62,7 @@ const user = page.props.auth.user as User
             <p class="text-muted-foreground -mt-4 text-sm">
               Your email address is unverified.
               <Link
-                :href="identityEmailVerificationPath()"
-                method="post"
+                :href="identityEmailVerifications.create()"
                 as="button"
                 class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
               >

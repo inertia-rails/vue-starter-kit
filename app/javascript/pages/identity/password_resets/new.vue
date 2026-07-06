@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AuthLayout from "@/layouts/AuthLayout.vue"
-import { identityPasswordResetPath, signInPath } from "@/routes"
+import { identityPasswordResets, sessions } from "@/routes"
 </script>
 
 <template>
@@ -20,8 +20,7 @@ import { identityPasswordResetPath, signInPath } from "@/routes"
 
     <div class="space-y-6">
       <Form
-        method="post"
-        :action="identityPasswordResetPath()"
+        :action="identityPasswordResets.create()"
         #default="{ errors, processing }"
       >
         <div class="grid gap-2">
@@ -47,7 +46,7 @@ import { identityPasswordResetPath, signInPath } from "@/routes"
 
       <div class="text-muted-foreground space-x-1 text-center text-sm">
         <span>Or, return to</span>
-        <TextLink :href="signInPath()">log in</TextLink>
+        <TextLink :href="sessions.new()">log in</TextLink>
       </div>
     </div>
   </AuthLayout>

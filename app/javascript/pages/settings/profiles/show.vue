@@ -9,13 +9,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AppLayout from "@/layouts/AppLayout.vue"
 import SettingsLayout from "@/layouts/settings/Layout.vue"
-import { settingsProfilePath } from "@/routes"
+import { settingsProfiles } from "@/routes"
 import { type BreadcrumbItem, type User } from "@/types"
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: "Profile settings",
-    href: settingsProfilePath(),
+    href: settingsProfiles.show().url,
   },
 ]
 
@@ -35,8 +35,7 @@ const user = page.props.auth.user as User
         />
 
         <Form
-          method="patch"
-          :action="settingsProfilePath()"
+          :action="settingsProfiles.update()"
           :options="{ preserveScroll: true }"
           class="space-y-6"
           #default="{ errors, processing, recentlySuccessful }"

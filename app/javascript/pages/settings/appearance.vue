@@ -5,13 +5,13 @@ import AppearanceTabs from "@/components/AppearanceTabs.vue"
 import HeadingSmall from "@/components/HeadingSmall.vue"
 import AppLayout from "@/layouts/AppLayout.vue"
 import SettingsLayout from "@/layouts/settings/Layout.vue"
-import { settingsAppearancePath } from "@/routes"
+import { settingsAppearance } from "@/routes"
 import { type BreadcrumbItem } from "@/types"
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: "Appearance settings",
-    href: settingsAppearancePath(),
+    href: settingsAppearance().url,
   },
 ]
 </script>

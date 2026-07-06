@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { dashboardPath } from "@/routes"
+import { dashboard } from "@/routes"
 import { type NavItem } from "@/types"
 
 import AppLogo from "./AppLogo.vue"
@@ -22,7 +22,7 @@ import AppLogo from "./AppLogo.vue"
 const mainNavItems: NavItem[] = [
   {
     title: "Dashboard",
-    href: dashboardPath(),
+    href: dashboard.index().url,
     icon: LayoutGrid,
   },
 ]
@@ -47,7 +47,7 @@ const footerNavItems: NavItem[] = [
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton size="lg" as-child>
-            <Link :href="dashboardPath()">
+            <Link :href="dashboard.index()">
               <AppLogo />
             </Link>
           </SidebarMenuButton>

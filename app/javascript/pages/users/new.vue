@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AuthBase from "@/layouts/AuthLayout.vue"
-import { signInPath, signUpPath } from "@/routes"
+import { sessions, users } from "@/routes"
 </script>
 
 <template>
@@ -19,8 +19,7 @@ import { signInPath, signUpPath } from "@/routes"
     <Head title="Register" />
 
     <Form
-      method="post"
-      :action="signUpPath()"
+      :action="users.create()"
       :resetOnSuccess="['password', 'password_confirmation']"
       disableWhileProcessing
       class="flex flex-col gap-6"
@@ -98,7 +97,7 @@ import { signInPath, signUpPath } from "@/routes"
       <div class="text-muted-foreground text-center text-sm">
         Already have an account?
         <TextLink
-          :href="signInPath()"
+          :href="sessions.new()"
           class="underline underline-offset-4"
           :tabindex="6"
           >Log in</TextLink

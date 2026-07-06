@@ -3,7 +3,7 @@ import { Head, Link } from "@inertiajs/vue3"
 
 import AppLogoIcon from "@/components/AppLogoIcon.vue"
 import ResourceItem from "@/components/ResourceItem.vue"
-import { dashboardPath, signInPath, signUpPath } from "@/routes"
+import { dashboard, sessions, users } from "@/routes"
 
 const appName = import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"
 
@@ -43,20 +43,20 @@ const links = [
       <nav class="flex items-center justify-end gap-4">
         <Link
           v-if="$page.props.auth.user"
-          :href="dashboardPath()"
+          :href="dashboard.index()"
           class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
         >
           Dashboard
         </Link>
         <template v-else>
           <Link
-            :href="signInPath()"
+            :href="sessions.new()"
             class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
           >
             Log in
           </Link>
           <Link
-            :href="signUpPath()"
+            :href="users.new()"
             class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
           >
             Register
