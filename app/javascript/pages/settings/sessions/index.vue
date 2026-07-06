@@ -65,10 +65,7 @@ const { auth } = usePage().props
                 variant="destructive"
                 asChild
               >
-                <Link
-                  :href="sessionsRoutes.destroy(session.id)"
-                  as="button"
-                >
+                <Link :href="sessionsRoutes.destroy(session.id)" as="button">
                   Log out
                 </Link>
               </Button>
