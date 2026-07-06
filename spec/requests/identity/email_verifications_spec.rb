@@ -4,10 +4,11 @@ require "rails_helper"
 include ActiveSupport::Testing::TimeHelpers
 
 RSpec.describe "Identity::EmailVerifications", type: :request do
-  let(:user) { create(:user, verified: false) }
+  fixtures :users
+  let(:user) { users(:unverified) }
 
   before do
-    sign_in_as user
+    sign_in user
   end
 
   describe "POST /identity/email_verification" do
