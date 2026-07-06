@@ -1,15 +1,20 @@
 import { onMounted, ref } from "vue"
 
+import { isBrowser } from "@/lib/browser"
+import * as storage from "@/lib/storage"
+
 type Appearance = "light" | "dark" | "system"
 
 const prefersDark = () => {
-  if (typeof window === "undefined") {
+  if (!isBrowser) {
     return false
   }
   return window.matchMedia("(prefers-color-scheme: dark)").matches
 }
 
 const applyTheme = (appearance: Appearance) => {
+  if (!isBrowser) return
+
   const isDark =
     appearance === "dark" || (appearance === "system" && prefersDark())
 
@@ -17,7 +22,7 @@ const applyTheme = (appearance: Appearance) => {
 }
 
 const mediaQuery = () => {
-  if (typeof window === "undefined") {
+  if (!isBrowser) {
     return null
   }
 
@@ -25,13 +30,13 @@ const mediaQuery = () => {
 }
 
 const handleSystemThemeChange = () => {
-  const currentAppearance = localStorage.getItem("appearance") as Appearance
+  const currentAppearance = storage.getItem("appearance") as Appearance
   applyTheme(currentAppearance ?? "system")
 }
 
 export function initializeTheme() {
   const savedAppearance =
-    (localStorage.getItem("appearance") as Appearance) || "system"
+    (storage.getItem("appearance") as Appearance) || "system"
 
   applyTheme(savedAppearance)
 
@@ -42,9 +47,7 @@ const appearance = ref<Appearance>("system")
 
 export function useAppearance() {
   onMounted(() => {
-    const savedAppearance = localStorage.getItem(
-      "appearance",
-    ) as Appearance | null
+    const savedAppearance = storage.getItem("appearance") as Appearance | null
 
     if (savedAppearance) {
       appearance.value = savedAppearance
@@ -55,9 +58,9 @@ export function useAppearance() {
     appearance.value = value
 
     if (value === "system") {
-      localStorage.removeItem("appearance")
+      storage.removeItem("appearance")
     } else {
-      localStorage.setItem("appearance", value)
+      storage.setItem("appearance", value)
     }
     applyTheme(value)
   }
