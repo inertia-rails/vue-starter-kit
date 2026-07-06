@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { usersPath } from "@/routes"
+import { users } from "@/routes"
 
 const passwordInput = ref<HTMLInputElement | null>(null)
 </script>
@@ -43,8 +43,7 @@ const passwordInput = ref<HTMLInputElement | null>(null)
         </DialogTrigger>
         <DialogContent>
           <Form
-            method="delete"
-            :action="usersPath()"
+            :action="users.destroy()"
             :options="{ preserveScroll: true }"
             :onError="() => passwordInput?.focus()"
             resetOnSuccess

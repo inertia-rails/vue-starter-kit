@@ -5,13 +5,13 @@ import HeadingSmall from "@/components/HeadingSmall.vue"
 import { Button } from "@/components/ui/button"
 import AppLayout from "@/layouts/AppLayout.vue"
 import SettingsLayout from "@/layouts/settings/Layout.vue"
-import { sessionPath, settingsSessionsPath } from "@/routes"
+import { sessions as sessionsRoutes, settingsSessions } from "@/routes"
 import type { BreadcrumbItem, Session } from "@/types"
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: "Sessions",
-    href: settingsSessionsPath(),
+    href: settingsSessions.index().url,
   },
 ]
 
@@ -66,8 +66,7 @@ const { auth } = usePage().props
                 asChild
               >
                 <Link
-                  method="delete"
-                  :href="sessionPath({ id: session.id })"
+                  :href="sessionsRoutes.destroy(session.id)"
                   as="button"
                 >
                   Log out

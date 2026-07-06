@@ -8,13 +8,13 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import AppLayout from "@/layouts/AppLayout.vue"
 import SettingsLayout from "@/layouts/settings/Layout.vue"
-import { settingsPasswordPath } from "@/routes"
+import { settingsPasswords } from "@/routes"
 import { type BreadcrumbItem } from "@/types"
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
     title: "Password settings",
-    href: settingsPasswordPath(),
+    href: settingsPasswords.show().url,
   },
 ]
 </script>
@@ -32,8 +32,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
         <Form
           class="space-y-6"
-          method="put"
-          :action="settingsPasswordPath()"
+          :action="settingsPasswords.update()"
           :options="{ preserveScroll: true }"
           resetOnError
           resetOnSuccess

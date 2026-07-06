@@ -34,7 +34,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { getInitials } from "@/composables/useInitials"
-import { dashboardPath } from "@/routes"
+import { dashboard } from "@/routes"
 import type { BreadcrumbItem, NavItem } from "@/types"
 
 interface Props {
@@ -139,7 +139,7 @@ const rightNavItems: NavItem[] = [
           </Sheet>
         </div>
 
-        <Link :href="dashboardPath()" class="flex items-center gap-x-2">
+        <Link :href="dashboard.index()" class="flex items-center gap-x-2">
           <AppLogo />
         </Link>
 

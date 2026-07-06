@@ -2,7 +2,7 @@
 import { Link } from "@inertiajs/vue3"
 
 import AppLogoIcon from "@/components/AppLogoIcon.vue"
-import { rootPath } from "@/routes"
+import { home } from "@/routes"
 
 defineProps<{
   title?: string
@@ -21,7 +21,7 @@ const appName = import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"
     >
       <div class="absolute inset-0 bg-zinc-900" />
       <Link
-        :href="rootPath()"
+        :href="home.index()"
         class="relative z-20 flex items-center text-lg font-medium"
       >
         <AppLogoIcon class="mr-2 size-8 fill-current text-white" />
