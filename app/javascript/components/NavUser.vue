@@ -19,7 +19,7 @@ import { type User } from "@/types"
 import UserMenuContent from "./UserMenuContent.vue"
 
 const page = usePage()
-const auth = page.props.auth as { user: User; session: { id: string } }
+const auth = page.props.auth as { user: User; session: { id: number } }
 const { isMobile, state } = useSidebar()
 </script>
 

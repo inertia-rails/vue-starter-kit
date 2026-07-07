@@ -1,7 +1,6 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
-@plugin "tailwindcss-animate";
+@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
@@ -123,12 +122,13 @@
       height: 0;
     }
     to {
-      height: var(--reka-accordion-content-height);
+      height: var(--radix-accordion-content-height);
     }
   }
+
   @keyframes accordion-up {
     from {
-      height: var(--reka-accordion-content-height);
+      height: var(--radix-accordion-content-height);
     }
     to {
       height: 0;

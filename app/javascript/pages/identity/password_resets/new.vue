@@ -2,11 +2,10 @@
 import { Form, Head } from "@inertiajs/vue3"
 import { LoaderCircle } from "lucide-vue-next"
 
-import InputError from "@/components/InputError.vue"
 import TextLink from "@/components/TextLink.vue"
 import { Button } from "@/components/ui/button"
+import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import AuthLayout from "@/layouts/AuthLayout.vue"
 import { identityPasswordResets, sessions } from "@/routes"
 </script>
@@ -23,8 +22,8 @@ import { identityPasswordResets, sessions } from "@/routes"
         :action="identityPasswordResets.create()"
         #default="{ errors, processing }"
       >
-        <div class="grid gap-2">
-          <Label for="email">Email address</Label>
+        <Field>
+          <FieldLabel for="email">Email address</FieldLabel>
           <Input
             id="email"
             name="email"
@@ -33,8 +32,8 @@ import { identityPasswordResets, sessions } from "@/routes"
             autofocus
             placeholder="email@example.com"
           />
-          <InputError :messages="errors.email" />
-        </div>
+          <FieldError :errors="errors.email" />
+        </Field>
 
         <div class="my-6 flex items-center justify-start">
           <Button class="w-full" :disabled="processing">

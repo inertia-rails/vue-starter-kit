@@ -14,7 +14,6 @@ FileUtils.chdir APP_ROOT do
 
   puts "== Installing dependencies =="
   system("bundle check") || system!("bundle install")
-
   system! "npm install"
 
   # puts "\n== Copying sample files =="

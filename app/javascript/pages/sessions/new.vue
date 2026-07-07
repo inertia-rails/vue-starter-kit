@@ -2,11 +2,15 @@
 import { Form, Head } from "@inertiajs/vue3"
 import { LoaderCircle } from "lucide-vue-next"
 
-import InputError from "@/components/InputError.vue"
 import TextLink from "@/components/TextLink.vue"
 import { Button } from "@/components/ui/button"
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import AuthBase from "@/layouts/AuthLayout.vue"
 import { identityPasswordResets, sessions, users } from "@/routes"
 </script>
@@ -24,9 +28,9 @@ import { identityPasswordResets, sessions, users } from "@/routes"
       class="flex flex-col gap-6"
       #default="{ errors, processing }"
     >
-      <div class="grid gap-6">
-        <div class="grid gap-2">
-          <Label for="email">Email address</Label>
+      <FieldGroup>
+        <Field>
+          <FieldLabel for="email">Email address</FieldLabel>
           <Input
             id="email"
             name="email"
@@ -37,12 +41,12 @@ import { identityPasswordResets, sessions, users } from "@/routes"
             autocomplete="email"
             placeholder="email@example.com"
           />
-          <InputError :messages="errors.email" />
-        </div>
+          <FieldError :errors="errors.email" />
+        </Field>
 
-        <div class="grid gap-2">
+        <Field>
           <div class="flex items-center justify-between">
-            <Label for="password">Password</Label>
+            <FieldLabel for="password">Password</FieldLabel>
             <TextLink
               :href="identityPasswordResets.new()"
               class="text-sm"
@@ -60,8 +64,8 @@ import { identityPasswordResets, sessions, users } from "@/routes"
             autocomplete="current-password"
             placeholder="Password"
           />
-          <InputError :messages="errors.password" />
-        </div>
+          <FieldError :errors="errors.password" />
+        </Field>
 
         <Button
           type="submit"
@@ -72,7 +76,7 @@ import { identityPasswordResets, sessions, users } from "@/routes"
           <LoaderCircle v-if="processing" class="h-4 w-4 animate-spin" />
           Log in
         </Button>
-      </div>
+      </FieldGroup>
 
       <div class="text-muted-foreground text-center text-sm">
         Don't have an account?

@@ -22,7 +22,7 @@ export interface FlashData {
   notice?: string
 }
 
-export interface SharedData {
+export interface SharedProps {
   auth: Auth
 }
 
@@ -39,7 +39,7 @@ export interface User {
 export type BreadcrumbItemType = BreadcrumbItem
 
 export interface Session {
-  id: string
+  id: number
   user_agent: string
   ip_address: string
   created_at: string

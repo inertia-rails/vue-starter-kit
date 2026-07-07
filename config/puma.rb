@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This configuration file will be evaluated by Puma. The top-level methods that
 # are invoked here are part of Puma's configuration DSL. For more information
 # about methods provided by the DSL, see https://puma.io/puma/Puma/DSL.html.
@@ -42,6 +40,5 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
-
 # Run the Inertia SSR process alongside Puma when config.ssr_enabled is true.
 plugin :inertia_ssr

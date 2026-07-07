@@ -3,7 +3,6 @@ import { Form } from "@inertiajs/vue3"
 import { ref } from "vue"
 
 import HeadingSmall from "@/components/HeadingSmall.vue"
-import InputError from "@/components/InputError.vue"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -15,8 +14,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { users } from "@/routes"
 
 const passwordInput = ref<HTMLInputElement | null>(null)
@@ -61,8 +60,10 @@ const passwordInput = ref<HTMLInputElement | null>(null)
               </DialogDescription>
             </DialogHeader>
 
-            <div class="grid gap-2">
-              <Label for="password_challenge" class="sr-only">Password</Label>
+            <Field>
+              <FieldLabel for="password_challenge" class="sr-only">
+                Password
+              </FieldLabel>
               <Input
                 id="password_challenge"
                 type="password"
@@ -70,8 +71,8 @@ const passwordInput = ref<HTMLInputElement | null>(null)
                 ref="passwordInput"
                 placeholder="Password"
               />
-              <InputError :messages="errors.password_challenge" />
-            </div>
+              <FieldError :errors="errors.password_challenge" />
+            </Field>
 
             <DialogFooter class="gap-2">
               <DialogClose as-child>

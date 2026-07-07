@@ -2,8 +2,8 @@
 # check=error=true
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build -t vue_starter_kit .
-# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name vue_starter_kit vue_starter_kit
+# docker build -t vue-starter-kit .
+# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name vue-starter-kit vue-starter-kit
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
@@ -39,7 +39,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Node.js (needed for builds; kept in runtime for SSR)
-ARG NODE_VERSION=22.22.2
+ARG NODE_VERSION=22.23.1
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
