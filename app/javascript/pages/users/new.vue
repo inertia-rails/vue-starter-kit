@@ -2,11 +2,15 @@
 import { Form, Head } from "@inertiajs/vue3"
 import { LoaderCircle } from "lucide-vue-next"
 
-import InputError from "@/components/InputError.vue"
 import TextLink from "@/components/TextLink.vue"
 import { Button } from "@/components/ui/button"
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import AuthBase from "@/layouts/AuthLayout.vue"
 import { sessions, users } from "@/routes"
 </script>
@@ -25,9 +29,9 @@ import { sessions, users } from "@/routes"
       class="flex flex-col gap-6"
       #default="{ errors, processing }"
     >
-      <div class="grid gap-6">
-        <div class="grid gap-2">
-          <Label for="name">Name</Label>
+      <FieldGroup>
+        <Field>
+          <FieldLabel for="name">Name</FieldLabel>
           <Input
             id="name"
             name="name"
@@ -38,11 +42,11 @@ import { sessions, users } from "@/routes"
             autocomplete="name"
             placeholder="Full name"
           />
-          <InputError :messages="errors.name" />
-        </div>
+          <FieldError :errors="errors.name" />
+        </Field>
 
-        <div class="grid gap-2">
-          <Label for="email">Email address</Label>
+        <Field>
+          <FieldLabel for="email">Email address</FieldLabel>
           <Input
             id="email"
             name="email"
@@ -52,11 +56,11 @@ import { sessions, users } from "@/routes"
             autocomplete="email"
             placeholder="email@example.com"
           />
-          <InputError :messages="errors.email" />
-        </div>
+          <FieldError :errors="errors.email" />
+        </Field>
 
-        <div class="grid gap-2">
-          <Label for="password">Password</Label>
+        <Field>
+          <FieldLabel for="password">Password</FieldLabel>
           <Input
             id="password"
             name="password"
@@ -66,11 +70,11 @@ import { sessions, users } from "@/routes"
             autocomplete="new-password"
             placeholder="Password"
           />
-          <InputError :messages="errors.password" />
-        </div>
+          <FieldError :errors="errors.password" />
+        </Field>
 
-        <div class="grid gap-2">
-          <Label for="password_confirmation">Confirm password</Label>
+        <Field>
+          <FieldLabel for="password_confirmation">Confirm password</FieldLabel>
           <Input
             id="password_confirmation"
             name="password_confirmation"
@@ -80,8 +84,8 @@ import { sessions, users } from "@/routes"
             autocomplete="new-password"
             placeholder="Confirm password"
           />
-          <InputError :messages="errors.password_confirmation" />
-        </div>
+          <FieldError :errors="errors.password_confirmation" />
+        </Field>
 
         <Button
           type="submit"
@@ -92,7 +96,7 @@ import { sessions, users } from "@/routes"
           <LoaderCircle v-if="processing" class="h-4 w-4 animate-spin" />
           Create account
         </Button>
-      </div>
+      </FieldGroup>
 
       <div class="text-muted-foreground text-center text-sm">
         Already have an account?

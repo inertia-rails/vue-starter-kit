@@ -3,13 +3,13 @@
 class Identity::PasswordResetsController < InertiaController
   skip_before_action :authenticate
 
-  before_action :set_user, only: %i[ edit update ]
+  before_action :set_user, only: %i[edit update]
 
   def new
   end
 
   def edit
-    render inertia: {email: @user.email, sid: params[:sid]}
+    render inertia: { email: @user.email, sid: params[:sid] }
   end
 
   def create
@@ -25,7 +25,7 @@ class Identity::PasswordResetsController < InertiaController
     if @user.update(user_params)
       redirect_to sign_in_path, notice: "Your password was reset successfully. Please sign in"
     else
-      redirect_to edit_identity_password_reset_path(sid: params[:sid]), inertia: {errors: @user.errors}
+      redirect_to edit_identity_password_reset_path(sid: params[:sid]), inertia: { errors: @user.errors }
     end
   end
 

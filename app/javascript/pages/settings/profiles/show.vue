@@ -3,10 +3,9 @@ import { Form, Head, usePage } from "@inertiajs/vue3"
 
 import DeleteUser from "@/components/DeleteUser.vue"
 import HeadingSmall from "@/components/HeadingSmall.vue"
-import InputError from "@/components/InputError.vue"
 import { Button } from "@/components/ui/button"
+import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import AppLayout from "@/layouts/AppLayout.vue"
 import SettingsLayout from "@/layouts/settings/Layout.vue"
 import { settingsProfiles } from "@/routes"
@@ -40,19 +39,18 @@ const user = page.props.auth.user as User
           class="space-y-6"
           #default="{ errors, processing, recentlySuccessful }"
         >
-          <div class="grid gap-2">
-            <Label for="name">Name</Label>
+          <Field>
+            <FieldLabel for="name">Name</FieldLabel>
             <Input
               id="name"
               name="name"
               :defaultValue="user.name"
-              class="mt-1 block w-full"
               required
               autocomplete="name"
               placeholder="Full name"
             />
-            <InputError class="mt-2" :messages="errors.name" />
-          </div>
+            <FieldError :errors="errors.name" />
+          </Field>
 
           <div class="flex items-center gap-4">
             <Button :disabled="processing">Save</Button>

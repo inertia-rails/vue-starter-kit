@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { HTMLAttributes, Ref } from "vue"
 import {
   defaultDocument,
   useEventListener,
@@ -6,18 +7,15 @@ import {
   useVModel,
 } from "@vueuse/core"
 import { TooltipProvider } from "reka-ui"
-import type { HTMLAttributes, Ref } from "vue"
 import { computed, ref } from "vue"
-
 import { cn } from "@/lib/utils"
-
 import {
+  provideSidebarContext,
   SIDEBAR_COOKIE_MAX_AGE,
   SIDEBAR_COOKIE_NAME,
   SIDEBAR_KEYBOARD_SHORTCUT,
   SIDEBAR_WIDTH,
   SIDEBAR_WIDTH_ICON,
-  provideSidebarContext,
 } from "./utils"
 
 const props = withDefaults(

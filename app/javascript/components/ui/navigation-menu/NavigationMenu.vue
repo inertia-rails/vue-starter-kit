@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { reactiveOmit } from "@vueuse/core"
 import type { NavigationMenuRootEmits, NavigationMenuRootProps } from "reka-ui"
-import { NavigationMenuRoot, useForwardPropsEmits } from "reka-ui"
 import type { HTMLAttributes } from "vue"
-
+import { reactiveOmit } from "@vueuse/core"
+import { NavigationMenuRoot, useForwardPropsEmits } from "reka-ui"
 import { cn } from "@/lib/utils"
-
 import NavigationMenuViewport from "./NavigationMenuViewport.vue"
 
 const props = withDefaults(
@@ -27,6 +25,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 <template>
   <NavigationMenuRoot
+    v-slot="slotProps"
     data-slot="navigation-menu"
     :data-viewport="viewport"
     v-bind="forwarded"
@@ -37,7 +36,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       )
     "
   >
-    <slot />
+    <slot v-bind="slotProps" />
     <NavigationMenuViewport v-if="viewport" />
   </NavigationMenuRoot>
 </template>

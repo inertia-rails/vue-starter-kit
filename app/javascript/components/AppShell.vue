@@ -2,6 +2,7 @@
 import { ref, watch } from "vue"
 
 import { SidebarProvider } from "@/components/ui/sidebar"
+import * as storage from "@/lib/storage"
 
 interface Props {
   variant?: "header" | "sidebar"
@@ -9,16 +10,10 @@ interface Props {
 
 defineProps<Props>()
 
-const isOpen = ref(true)
-
-if (typeof window !== "undefined") {
-  isOpen.value = localStorage.getItem("sidebar") !== "false"
-}
+const isOpen = ref(storage.getItem("sidebar") !== "false")
 
 watch(isOpen, (open) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("sidebar", String(open))
-  }
+  storage.setItem("sidebar", String(open))
 })
 </script>
 

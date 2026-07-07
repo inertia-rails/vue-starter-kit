@@ -4,7 +4,7 @@
     <title data-inertia><%= content_for(:title) || "Vue Starter Kit" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Svelte Starter Kit">
+    <meta name="application-name" content="Vue Starter Kit">
     <meta name="mobile-web-app-capable" content="yes">
     <%= capybara_lockstep if defined?(Capybara::Lockstep) %>
     <%= csrf_meta_tags %>
@@ -24,7 +24,7 @@
       document.documentElement.classList.toggle(
         "dark",
         localStorage.appearance === "dark" ||
-        (!("appearance" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+          (!("appearance" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
       );
     </script>
 

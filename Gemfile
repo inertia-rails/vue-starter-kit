@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.1"
+gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -28,7 +26,7 @@ gem "solid_cable"
 gem "bootsnap", require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem "kamal", require: false, group: [:development, :deploy]
+gem "kamal", require: false, group: [ :development, :deploy ]
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
@@ -36,8 +34,7 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Vite integration for Rails [https://github.com/skryukov/rails_vite]
-gem "rails_vite"
+gem "rails_vite" # Vite integration [https://github.com/skryukov/rails_vite]
 
 # The Rails adapter for Inertia.js [https://inertia-rails.dev]
 gem "inertia_rails", "~> 3.21"
@@ -62,7 +59,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # RSpec for Rails 7.2+
+  # RSpec for Rails 7+
   gem "rspec-rails", "~> 8.0"
 end
 

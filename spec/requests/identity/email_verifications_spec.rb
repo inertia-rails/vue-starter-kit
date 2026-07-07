@@ -49,7 +49,7 @@ RSpec.describe "Identity::EmailVerifications", type: :request do
 
       expect {
         post identity_email_verification_path
-      }.to have_enqueued_email(UserMailer, :email_verification).with(params: {user: user}, args: [])
+      }.to have_enqueued_email(UserMailer, :email_verification).with(params: { user: user }, args: [])
       expect(response).to be_redirect
     end
   end
