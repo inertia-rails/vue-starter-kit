@@ -17,7 +17,7 @@ RSpec.describe "Identity::PasswordResets", type: :request do
       it "sends a password reset email" do
         expect {
           post identity_password_reset_path, params: {email: users(:one).email}
-        }.to have_enqueued_mail(UserMailer, :password_reset)
+        }.to have_enqueued_email(UserMailer, :password_reset).with(params: {user: users(:one)}, args: [])
         expect(response).to redirect_to(sign_in_path)
       end
     end
