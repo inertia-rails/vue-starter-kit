@@ -1,4 +1,4 @@
-# Password for all users is: Secret1*3*5*
+# Password for both users is: Secret1*3*5*
 one:
   email: one@example.com
   name: Test User
@@ -10,9 +10,3 @@ two:
   name: Another User
   password_digest: "$2a$04$FPZVbthSpWD4rXvKNiNgzOVDQ3W4ozJjvtr59iUo6hWHCyAiiM9AO"
   verified: true
-
-unverified:
-  email: unverified@example.com
-  name: Unverified User
-  password_digest: "$2a$04$FPZVbthSpWD4rXvKNiNgzOVDQ3W4ozJjvtr59iUo6hWHCyAiiM9AO"
-  verified: false
