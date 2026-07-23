@@ -5,9 +5,7 @@ import { reactiveOmit } from "@vueuse/core"
 import { NavigationMenuItem } from "reka-ui"
 import { cn } from "@/lib/utils"
 
-const props = defineProps<
-  NavigationMenuItemProps & { class?: HTMLAttributes["class"] }
->()
+const props = defineProps<NavigationMenuItemProps & { class?: HTMLAttributes["class"] }>()
 
 const delegatedProps = reactiveOmit(props, "class")
 </script>
