@@ -15,7 +15,10 @@ const props = defineProps<{
     role="group"
     data-slot="field"
     :data-orientation="orientation"
-    :class="cn(fieldVariants({ orientation }), props.class)"
+    :class="cn(
+      fieldVariants({ orientation }),
+      props.class,
+    )"
   >
     <slot />
   </div>
