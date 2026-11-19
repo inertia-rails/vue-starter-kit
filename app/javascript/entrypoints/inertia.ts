@@ -8,6 +8,7 @@ const appName = import.meta.env.VITE_APP_NAME ?? "Vue Starter Kit"
 createInertiaApp({
   title: (title) => (title ? `${title} - ${appName}` : appName),
   pages: "../pages",
+  serverHead: true,
   layout: () => PersistentLayout,
   defaults: {
     form: {
